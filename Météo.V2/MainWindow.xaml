@@ -1,0 +1,63 @@
+﻿<Window x:Class="Météo.V2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Météo.V2"
+        mc:Ignorable="d"
+       Title="Weather App" Height="500" Width="350">
+    <Grid Background="LightSteelBlue">
+        <!-- Main Weather Information -->
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0">
+            <TextBlock Text="Chandigarh" FontSize="28" Foreground="White" FontWeight="Bold" TextAlignment="Center"/>
+            <TextBlock Text="16°" FontSize="72" Foreground="White" FontWeight="Bold" TextAlignment="Center"/>
+            <TextBlock Text="Scattered Thundershowers" FontSize="16" Foreground="White" TextAlignment="Center" Margin="0,5,0,0"/>
+        </StackPanel>
+
+        <!-- Weather Icon -->
+        <Image Source="cloud_with_thunder.png" Width="80" Height="80" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,150,0,0"/>
+
+        <!-- Weekly Forecast -->
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,30">
+            <Grid HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!-- Monday -->
+                <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                    <TextBlock Text="Mon" FontSize="14" Foreground="White" TextAlignment="Center"/>
+                    <Image Source="cloudy.png" Width="40" Height="40" HorizontalAlignment="Center"/>
+                    <TextBlock Text="22/16" FontSize="14" Foreground="White" TextAlignment="Center"/>
+                </StackPanel>
+                <!-- Tuesday -->
+                <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                    <TextBlock Text="Tue" FontSize="14" Foreground="White" TextAlignment="Center"/>
+                    <Image Source="thunder.png" Width="40" Height="40" HorizontalAlignment="Center"/>
+                    <TextBlock Text="20/13" FontSize="14" Foreground="White" TextAlignment="Center"/>
+                </StackPanel>
+                <!-- Wednesday -->
+                <StackPanel Grid.Column="2" HorizontalAlignment="Center">
+                    <TextBlock Text="Wed" FontSize="14" Foreground="White" TextAlignment="Center"/>
+                    <Image Source="rain.png" Width="40" Height="40" HorizontalAlignment="Center"/>
+                    <TextBlock Text="19/11" FontSize="14" Foreground="White" TextAlignment="Center"/>
+                </StackPanel>
+                <!-- Thursday -->
+                <StackPanel Grid.Column="3" HorizontalAlignment="Center">
+                    <TextBlock Text="Thu" FontSize="14" Foreground="White" TextAlignment="Center"/>
+                    <Image Source="cloudy.png" Width="40" Height="40" HorizontalAlignment="Center"/>
+                    <TextBlock Text="22/16" FontSize="14" Foreground="White" TextAlignment="Center"/>
+                </StackPanel>
+                <!-- Friday -->
+                <StackPanel Grid.Column="4" HorizontalAlignment="Center">
+                    <TextBlock Text="Fri" FontSize="14" Foreground="White" TextAlignment="Center"/>
+                    <Image Source="sunny.png" Width="40" Height="40" HorizontalAlignment="Center"/>
+                    <TextBlock Text="25/14" FontSize="14" Foreground="White" TextAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>
