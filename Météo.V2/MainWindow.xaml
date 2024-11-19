@@ -1,32 +1,69 @@
-﻿<Window x:Class="MeteoApp.MainWindow"
+﻿<Window x:Class="WeatherApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Application Météo" Height="500" Width="600">
+        Title="Prévisions Météo" Height="500" Width="400">
     <Grid>
         <!-- Titre de l'application -->
-        <TextBlock Text="Prévisions Météo" FontSize="28" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0"/>
+        <TextBlock Text="Prévisions Météo" FontSize="28" FontWeight="Bold" 
+                   HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"/>
 
-        <!-- Champ de texte pour entrer la ville -->
-        <TextBox Name="CityTextBox" Width="250" Height="30" Margin="10,70,10,0" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14"/>
+        <!-- Affichage des informations météo -->
+        <StackPanel Margin="10,60,10,0">
+            <TextBlock Name="TB_City" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <TextBlock Name="TB_Temp" FontSize="20" HorizontalAlignment="Center" Margin="0,10"/>
 
-        <!-- Bouton pour récupérer la météo -->
-        <Button Name="GetWeatherButton" Width="150" Height="35" Content="Obtenir Météo" Margin="10,110,10,0" VerticalAlignment="Top" HorizontalAlignment="Center" Padding="10" Background="#4CAF50" Foreground="White" BorderBrush="#388E3C" BorderThickness="1" FontSize="14"/>
+            <!-- Affichage des jours -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+                <TextBlock Name="TB_Fcst_Fday" FontSize="14" HorizontalAlignment="Center" Margin="10,0"/>
+                <TextBlock Name="TB_Fcst_Sday" FontSize="14" HorizontalAlignment="Center" Margin="10,0"/>
+                <TextBlock Name="TB_Fcst_Tday" FontSize="14" HorizontalAlignment="Center" Margin="10,0"/>
+            </StackPanel>
 
-        <!-- Affichage de la météo actuelle -->
-        <StackPanel Margin="20,160,20,0">
-            <TextBlock Name="CurrentWeatherTextBlock" Text="Météo Actuelle" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
-            <TextBlock Name="CurrentTemperatureTextBlock" FontSize="16" HorizontalAlignment="Center"/>
-            <TextBlock Name="CurrentDescriptionTextBlock" FontSize="14" HorizontalAlignment="Center"/>
+            <!-- Affichage des températures minimales -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+                <TextBlock Name="TB_Tempmin_Fday" FontSize="14" HorizontalAlignment="Center" Margin="10,0"/>
+                <TextBlock Name="TB_Tempmin_Sday" FontSize="14" HorizontalAlignment="Center" Margin="10,0"/>
+                <TextBlock Name="TB_Tempmin_Tday" FontSize="14" HorizontalAlignment="Center" Margin="10,0"/>
+            </StackPanel>
+
+            <!-- Affichage des températures maximales -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+                <TextBlock Name="TB_Tempmax_Fday" FontSize="14" HorizontalAlignment="Center" Margin="10,0"/>
+                <TextBlock Name="TB_Tempmax_Sday" FontSize="14" HorizontalAlignment="Center" Margin="10,0"/>
+                <TextBlock Name="TB_Tempmax_Tday" FontSize="14" HorizontalAlignment="Center" Margin="10,0"/>
+            </StackPanel>
         </StackPanel>
 
-        <!-- Affichage des prévisions pour plusieurs jours -->
-        <TextBlock Text="Prévisions sur les 5 prochains jours" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,250,0,0"/>
+        <!-- Affichage de l'image actuelle en haut -->
+        <Image Name="ImgDay" Width="60" Height="60" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,130,0,0"/>
 
-        <ListBox Name="ForecastListBox" Margin="10,280,10,10" VerticalAlignment="Top" Height="150">
-            <!-- Les prévisions météo seront ajoutées ici dynamiquement -->
-        </ListBox>
+        <!-- Affichage des icônes météo des jours suivants -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,180,0,0">
+            <StackPanel HorizontalAlignment="Center">
+                <Image Name="ImgDay1" Width="50" Height="50" Margin="5"/>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center">
+                <Image Name="ImgDay2" Width="50" Height="50" Margin="5"/>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center">
+                <Image Name="ImgDay3" Width="50" Height="50" Margin="5"/>
+            </StackPanel>
+        </StackPanel>
 
         <!-- Message d'erreur -->
-        <TextBlock Name="ErrorMessageTextBlock" FontSize="14" Foreground="Red" HorizontalAlignment="Center" Margin="0,440,0,10" Text=""/>
+        <TextBlock Name="TemperatureTextBlock" FontSize="14" Foreground="Red" 
+                   HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20" Text=""/>
+
+        <!-- Entrée de la ville et bouton d'ajout -->
+        <StackPanel Orientation="Horizontal" Margin="10,300,10,0" HorizontalAlignment="Center">
+            <TextBox Name="TB_EnterCity" Width="200" Height="30" VerticalAlignment="Center"/>
+            <Button Name="BTN_Add" Content="Ajouter" Width="100" Height="30" Margin="10,0,0,0"
+                    VerticalAlignment="Center" Click="BTN_Add_Click"/>
+        </StackPanel>
+
+        <!-- ComboBox pour sélectionner une ville -->
+        <ComboBox Name="CB_Cities" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,330,10,0" Width="200"
+                  SelectionChanged="CB_Cities_SelectionChanged">
+        </ComboBox>
     </Grid>
 </Window>
